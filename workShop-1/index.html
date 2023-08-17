@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="task1">
+      <p>Товаров в корзине: {{cartCount}}</p>
+      <button
+        v-for="button in buttons"
+        :key="button.id"
+        v-on:click="increaseCart(button)"
+      >
+        {{button.text}}
+        <!-- {{button.inCart ? 'товар в корзине' : 'купить'}} -->
+        <p v-if="button.inCart">Товар в корзине</p>
+        <p v-else>купить</p>
+      </button>
+    </div>
+    <div id="task2">
+      <button @click="isForteen = true">Мне исполнилось 14 лет</button>
+      <button @click="isForteen = false">Мне еще нет 14 лет</button>
+      <p v-if="isForteen">Можете купить товар</p>
+      <p v-else>Доступ закрыт</p>
+    </div>
+    <div id="task3">
+      <button @click="seeText">{{ isShow ? 'скрыть' : 'показать'}}</button>
+      <p v-show="isShow">Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div id="task4">
+      <button @click="generator">{{ buttonText}}</button>
+      <p v-if="number<5">Число меньше 5</p>
+      <p v-if="number>=5 && number<=9">Число от 5 до 9</p>
+      <p v-if="number===10">Число равно 10</p>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#task1",
+        data: {
+          cartCount: 0,
+          buttons: [
+            { id: 1, text: "купить", inCart: false },
+            { id: 2, text: "купить", inCart: false },
+            { id: 3, text: "купить", inCart: false },
+            { id: 4, text: "купить", inCart: false },
+          ],
+        },
+        methods: {
+          increaseCart(button) {
+            if (!button.inCart) {
+              this.cartCount++;
+              button.inCart = true;
+              button.text = "товар добавлен в корзину";
+            }
+          },
+        },
+      });
+      const app2 = new Vue({
+        el: "#task2",
+        data: {
+          isForteen: false,
+        },
+        methods: {
+          validationForteen() {},
+        },
+      });
+      const app3 = new Vue({
+        el: "#task3",
+        data: {
+          isShow: false,
+        },
+        methods: {
+          seeText() {
+            this.isShow = !this.isShow;
+          },
+        },
+      });
+      const app4 = new Vue({
+        el: "#task4",
+        data: {
+          number: null,
+          buttonText: "Генерировать случайное число ",
+        },
+        methods: {
+          generator() {
+            this.number = Math.ceil(Math.random() * 10);
+            this.buttonText = this.number;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
