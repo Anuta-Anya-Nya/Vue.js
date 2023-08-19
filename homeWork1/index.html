@@ -22,8 +22,8 @@
     <div id="task3">
       <h3>Task 3</h3>
       <ul>
-        <li v-for="item in array" :key="item.id">
-          {{ item.text }} <button @click="deleteItem(item.id)">Удалить</button>
+        <li v-for="(item, index) in array" :key="item.id">
+          {{ item.text }} <button @click="deleteItem(index)">Удалить</button>
         </li>
       </ul>
     </div>
@@ -43,17 +43,15 @@
         el: "#task2",
         data: {
           array: [],
-          id: 0,
           text: "Новый элемент списка",
         },
         methods: {
           addItem() {
             const element = {
-              id: this.id,
+              id: Date.now(),
               text: this.text,
             };
             this.array.push(element);
-            this.id++;
           },
         },
       });
@@ -68,12 +66,20 @@
           ],
         },
         methods: {
-          deleteItem(id) {
-            for (let i = 0; i < this.array.length; i++) {
-              if (this.array[i].id === id) {
-                this.array.splice(i, 1);
-              }
-            }
+          deleteItem(index) {
+            this.array.splice(index, 1);
+            
+            // let index = this.array.indexOf(item);
+            // if (index >= 0) {
+            //   this.array.splice(index, 1);
+            // }
+
+            // for (let i = 0; i < this.array.length; i++) {
+            //   if (this.array[i].id === id) {
+            //     this.array.splice(i, 1);
+            //     return;
+            //   }
+            // }
           },
         },
       });
