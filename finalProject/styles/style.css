@@ -489,6 +489,15 @@ a {
   letter-spacing: 0.22px;
   margin-bottom: 40px;
 }
+.latest-post__button {
+  transition: all 0.3s;
+}
+.latest-post__button:hover svg {
+  fill: #FFF;
+}
+.latest-post__button:hover circle {
+  stroke: #F4F0EC;
+}
 
 .articles {
   margin-bottom: 200px;

@@ -105,6 +105,16 @@
         }
 
     }
+
+    &__button {
+        transition: all 0.3s;
+        &:hover svg {
+            fill: #FFF;
+        }
+        &:hover circle {
+            stroke: #F4F0EC;
+        }
+    }
 }
 
 .articles {
