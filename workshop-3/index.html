@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <count-button></count-button>
+      <to-do-list></to-do-list>
+      <filter-list />
+      <bbb></bbb>
+    </div>
+    <script>
+      Vue.component("count-button", {
+        props: {},
+        data() {
+          return {
+            count: 0,
+          };
+        },
+        template: `<div>
+        <button @click="count++">Увеличить счетчик</button>
+      <button @click="count--">Уменьшить счетчик</button>
+      <p>{{count}}</p>
+      </div>`,
+      });
+
+      Vue.component("list-item", {
+        props: ["itemData"],
+        methods: {
+          removeItem(id) {
+            this.$emit("removeItemChild", id); //создаем новое событие, которое слушаем в родителе
+          },
+        },
+
+        template: `<ul>
+        <li>{{itemData.message}}
+          <button @click="removeItem(itemData.id)">Удалить</button></li>
+      </ul>`,
+      });
+
+      Vue.component("to-do-list", {
+        props: {},
+
+        data() {
+          return {
+            list: [],
+            message: "",
+          };
+        },
+        methods: {
+          addMessage() {
+            const message = {
+              id: Date.now(),
+              message: this.message,
+            };
+            this.list.push(message);
+            this.message = "";
+          },
+          removeItemParent(id) {
+            // this.list.splice(id, 1);
+            this.list = this.list.filter((item) => item.id !== id);
+          },
+        },
+        template: `<div>
+          <input type="text" v-model="message">
+          <button @click="addMessage">Добавить</button>
+      <list-item v-for="item in list" 
+      :key="item.id" 
+      :item-data="item" 
+      @removeItemChild="removeItemParent">
+      </list-item>
+      </div>`,
+      });
+
+      Vue.component("filter-list", {
+        data() {
+          return {
+            list: [
+              { id: 1, text: "list 1" },
+              { id: 2, text: "list 2" },
+              { id: 3, text: "list 3" },
+            ],
+            filter: "",
+          };
+        },
+        computed: {
+          listFilt() {
+            const reg = new RegExp(this.filter);
+            return this.list.filter((el) => reg.test(el.text));
+          },
+        },
+
+        template: `<div>
+          <input type="text" v-model="filter">
+      <ul>
+        <li v-for="item in listFilt" :key="item.id">{{item.text}}</li>
+      </ul>
+          </div>`,
+      });
+
+      // Vue.component("good", {
+      //   props: ["item"],
+
+      //   template: `<div>
+      //   <h1>{{item.name}}</h1>
+      //   <h3>{{item.price}}</h3>
+      //   <p>{{item.desc}}</p>
+      // </div>`,
+      // });
+
+      Vue.component("bbb", {
+        props: {},
+        data() {
+          return {};
+        },
+        template: `<div>
+        
+      <p>hello</p>
+      </div>`,
+      });
+      // Vue.component("bbb", {
+      //   data() {
+      //     return {
+      //       listGoods: [
+      //         { id: 11, name: "good1", price: 200, desc: "lorem lorem lorem" },
+      //         { id: 22, name: "good2", price: 400, desc: "lorem lorem lorem" },
+      //         { id: 33, name: "good3", price: 1000, desc: "lorem lorem lorem" },
+      //         { id: 44, name: "good4", price: 10, desc: "lorem lorem lorem" },
+      //       ],
+      //     };
+      //   },
+
+      //   template: `<div>
+      //   <h1>hello</h1>
+      // </div>`,
+      //   // <button>По возрастанию</button>
+      //   //   <button>По убыванию</button>
+      //   //   <div v-for="item in listGoods"  :key="item.id">
+      //   //     <h1>{{item.name}}</h1>
+      //   //   <h3>{{item.price}}</h3>
+      //   //   <p>{{item.desc}}</p>
+      //   //     </div>
+      //   // computed: {
+      //   //   filtList() {
+      //   //     if (this.filt === "larger") {
+      //   //       return this.list.sort((a, b) => a.price - b.price);
+      //   //     } else if (this.filt === "smaller") {
+      //   //       return this.list.sort((a, b) => b.price - a.price);
+      //   //     } else {
+      //   //       return this.list;
+      //   //     }
+      //   //   },
+      //   // },
+      // });
+
+      new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>
