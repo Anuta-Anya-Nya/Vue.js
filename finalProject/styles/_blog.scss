@@ -1,11 +1,15 @@
 .blog-banner {
     min-height: 356px;
-    background: url(../img/blog-banner.jpg) no-repeat bottom center;
+
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 200px;
+
+    &-blog {
+        background: url(../img/blog-banner.jpg) no-repeat bottom center;
+    }
 
     &__text {
         background-color: #fff;
@@ -22,27 +26,29 @@
         line-height: 125%;
     }
 
-    .breadCrumb {
-        text-align: center;
 
-        &__link {
+}
+
+.breadCrumb {
+    text-align: center;
+
+    &__link {
+        color: $color-text;
+        font-family: $font-text;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        /* 33px */
+        letter-spacing: 0.22px;
+
+        &:not(:last-child):after {
+            content: '/';
+            padding: 0 10px;
             color: $color-text;
-            font-family: $font-text;
-            font-size: 22px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%;
-            /* 33px */
-            letter-spacing: 0.22px;
-
-            &:not(:last-child):after {
-                content: '/';
-                padding: 0 10px;
-                color: $color-text;
-            }
         }
-
     }
+
 }
 
 .latest-post {
@@ -108,9 +114,11 @@
 
     &__button {
         transition: all 0.3s;
+
         &:hover svg {
             fill: #FFF;
         }
+
         &:hover circle {
             stroke: #F4F0EC;
         }
