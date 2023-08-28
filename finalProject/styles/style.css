@@ -676,6 +676,17 @@ a {
 .blogsList__img {
   margin-bottom: 35px;
 }
+.blogsList__list {
+  color: #CDA274;
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+  /* 25px */
+  letter-spacing: 0.4px;
+  margin-left: 20px;
+}
 
 .tags__title {
   color: #292F36;

@@ -103,7 +103,7 @@ Vue.component('blog-details', {
   </article>`,
 });
 Vue.component('blog', {
-    props: [],
+    props: ["article"],
 
     data() {
         return {
@@ -111,7 +111,11 @@ Vue.component('blog', {
         }
     },
 
-    template: ``,
+    template: `<li class="blogsList__li">
+    <a href="#" class="blogsList__text"
+    >{{article.title}}</a
+    >
+</li> `,
 });
 
 Vue.component('blogs-list', {
@@ -181,12 +185,8 @@ Vue.component('blogs-list', {
                             variations of passages of Lorem Ipsum available, but the majority
                             have suffered.
                         </p>
-                        <ol>
-                            <li v-for="article in getArticlesList" :key="article.id" class="blogsList__li">
-                                <a href="#" class="blogsList__text"
-                                >{{article.title}}</a
-                                >
-                            </li>              
+                        <ol class="blogsList__list">
+                            <blog v-for="article in getArticlesList" :key="article.id" :article="article"></blog>                                       
                         </ol>
                         <img
                         class="blogImg blogsList__img"
@@ -233,6 +233,3 @@ const app2 = new Vue({
 })
 
 
-// доделать компонент со статьей
-// покрасить циферки
-// сделать компонент для цитаты?
