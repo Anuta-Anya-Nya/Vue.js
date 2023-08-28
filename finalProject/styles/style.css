@@ -59,6 +59,7 @@ a {
 .banner__box {
   min-height: 758px;
   background: url(../img/banner.jpg) center center no-repeat;
+  background-size: cover;
   border-radius: 70px;
   padding-left: 52px;
   display: flex;
@@ -558,6 +559,7 @@ a {
 
 .blogBanner-blogDetails {
   background: url(../img/banner-blogdetails.jpg) no-repeat bottom center;
+  background-size: cover;
 }
 
 .blogDetails-box {
