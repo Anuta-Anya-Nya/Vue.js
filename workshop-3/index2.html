@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <task-4></task-4>
+    </div>
+
+    <script>
+      Vue.component("task-4", {
+        data() {
+          return {
+            searchF: "",
+            product: [
+              { name: "good1", price: 25 },
+              { name: "good2", price: 125 },
+              { name: "good3", price: 5 },
+              { name: "good4", price: 2500 },
+            ],
+          };
+        },
+        methods: {
+          sortUp() {
+            this.searchF = "up";
+            // this.product.sort((a, b) => a.price - b.price);
+          },
+          sortDown() {
+            this.searchF = "down";
+            // this.product.sort((a, b) => b.price - a.price);
+          },
+        },
+        computed: {
+          sortedPr() {
+            switch (this.searchF) {
+              case "up":
+                return this.product.toSorted((a, b) => a.price - b.price);
+              case "down":
+                return this.product.toSorted((a, b) => b.price - a.price);
+              default:
+                return this.product;
+            }
+          },
+        },
+        template: `<div>
+        <button @click="sortUp">По убыванию</button>
+        <button @click="sortDown">По возрастанию</button>
+        <p>{{searchF}}</p>
+        <ul>
+            <li v-for="item in sortedPr" :key="item.id">
+                {{item.name}} - {{item.price}}
+            </li>
+        </ul>
+    </div>`,
+      });
+      //   Vue.component("goods-sort", {
+      //     props: {},
+
+      //     data() {
+      //       return {
+      //         listGoods: [
+      //           { id: 11, name: "good1", price: 200, desc: "lorem lorem lorem" },
+      //           { id: 22, name: "good2", price: 400, desc: "lorem lorem lorem" },
+      //           { id: 33, name: "good3", price: 1000, desc: "lorem lorem lorem" },
+      //           { id: 44, name: "good4", price: 10, desc: "lorem lorem lorem" },
+      //         ],
+      //         filt: "",
+      //       };
+      //     },
+      //     methods: {
+      //       larger() {
+      //         this.filt = "larger";
+      //       },
+      //       smaller() {
+      //         this.filt = "smaller";
+      //       },
+      //     },
+      //     computed: {
+      //       filtList() {
+      //         if (this.filt === "larger") {
+      //           return this.listGoods.sort((a, b) => a.price - b.price);
+      //         } else if (this.filt === "smaller") {
+      //           return this.listGoods.sort((a, b) => b.price - a.price);
+      //         } else {
+      //           return this.listGoods;
+      //         }
+      //       },
+      //     },
+      //     template: `<div>
+      //                     <button @click = "filt = 'larger'">По возрастанию</button>
+      //                     <button @click = "smaller">По убыванию</button>
+      //                     <div v-for="item in listGoods"  :key="item.id">
+      //                         <h1>{{item.name}}</h1>
+      //                         <h3>{{item.price}}</h3>
+      //                         <p>{{item.desc}}</p>
+      //                     </div>
+      //                 </div>`,
+      //   });
+      const root = new Vue({
+        el: "#root",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

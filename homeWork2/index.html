@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="sortType='ascending'">По возрастанию цены</button>
+      <button @click="sortType='descending'">По убыванию цены</button>
+      <button @click="sortType=''">Сбросить сортировку</button>
+      <ul>
+        <li v-for="item in sortedProd" :key="item.id">
+          {{item.productName}} - price: {{item.price}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          sortType: "",
+          products: [
+            { id: 1, productName: "phone", price: 80000 },
+            { id: 2, productName: "laptop", price: 100000 },
+            { id: 3, productName: "monitor", price: 50000 },
+            { id: 4, productName: "mouse", price: 7500 },
+            { id: 5, productName: "keyboard", price: 12000 },
+            { id: 6, productName: "speaker", price: 20000 },
+          ],
+        },
+        computed: {
+          sortedProd() {
+            switch (this.sortType) {
+              case "ascending":
+                return this.products.toSorted((a, b) => a.price - b.price);
+              case "descending":
+                return this.products.toSorted((a, b) => b.price - a.price);
+              default:
+                return this.products;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
