@@ -64,6 +64,7 @@ a {
     &__box {
         min-height: 758px;
         background: url(../img/banner.jpg) center center no-repeat;
+        background-size: cover;
         border-radius: 70px;
         padding-left: 52px;
         display: flex;

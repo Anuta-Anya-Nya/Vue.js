@@ -1,0 +1,201 @@
+.header-blogDetails {
+    margin-bottom: 45px;
+}
+
+.blogBanner-blogDetails {
+    background: url(../img/banner-blogdetails.jpg) no-repeat bottom center;
+    background-size: cover;
+}
+
+.blogDetails-box {
+    display: grid;
+    grid-template-columns: minmax(100px, 800px) minmax(50px, 345px);
+    gap: 4.5%;
+    justify-content: space-between;
+    margin-bottom: 96px;
+}
+
+.blogDetails {
+    margin-bottom: 35px;
+
+    &__title {
+        color: $color-main;
+        font-family: $font-title;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+        /* 62.5px */
+        letter-spacing: 1px;
+        margin-bottom: 21px;
+    }
+
+    &__info {
+        margin: 48px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__data,
+    &__crumbs {
+        color: #4D5053;
+        font-family: $font-text;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        /* 24px */
+        letter-spacing: 0.16px;
+        text-transform: capitalize;
+    }
+
+    p {
+        color: #4D5053;
+        font-family: $font-text;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        /* 33px */
+        letter-spacing: 0.22px;
+    }
+
+    p:first-of-type {
+        margin-bottom: 40px;
+    }
+}
+
+.quotes {
+    min-height: 267px;
+    border-radius: 50px;
+    background: $color-background;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 27px;
+
+    blockquote {
+        color: $color-details;
+        text-align: center;
+        font-family: DM Serif Display;
+        font-size: 25px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 125%;
+        /* 31.25px */
+        letter-spacing: 0.5px;
+        max-width: 345px;
+    }
+}
+
+.blogImg {
+    display: block;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.blogsList {
+    &__title {
+        color: $color-main;
+        font-family: $font-title;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+        /* 62.5px */
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        color: $color-text;
+        font-family: $font-text;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        /* 33px */
+        letter-spacing: 0.22px;
+    }
+
+    p:first-of-type {
+        margin-bottom: 24px;
+    }
+
+    &__li:not(:last-of-type) {
+        margin-bottom: 32px;
+    }
+
+    &__li:last-of-type {
+        margin-bottom: 44px;
+    }
+
+    &__img {
+        margin-bottom: 35px;
+    }
+
+    &__list {
+        color: $color-details;
+        font-family: $font-title;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+        /* 25px */
+        letter-spacing: 0.4px;
+        margin-left: 20px;
+    }
+
+}
+
+.tags {
+
+    &__title {
+        color: #292F36;
+        font-family: $font-title;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+        /* 31.25px */
+        letter-spacing: 0.5px;
+        margin-bottom: 24px;
+    }
+
+    &__box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__button {
+        padding: 9px 30px;
+        border-radius: 10px;
+        background: #F4F0EC;
+        color: #000;
+        text-align: center;
+        font-family: $font-text;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+        /* 22.5px */
+        letter-spacing: 0.36px;
+        border: none;
+        transition: all 0.3s;
+
+        &:hover {
+            background: #292F36;
+            color: #FFF;
+        }
+
+        &-active {
+            background: #292F36;
+            color: #FFF;
+        }
+    }
+
+}
